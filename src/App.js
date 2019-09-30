@@ -69,10 +69,12 @@ class Login extends Component {
     this.state = {
       stakedTokens: 1000,
       tokenPrice: 0.1,
+      useCases: 4,
       txNumber: 80000,
       txCost: 0.01,
       nodeCategory: 1.0,
-      isGenesisPhase: false
+      isGenesisPhase: false,
+      genesisPhaseCheckboxState: "",
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleCheckboxChange = this.handleCheckboxChange.bind(this);
@@ -86,10 +88,29 @@ class Login extends Component {
     return (this.state.stakedTokens * 0.00001 * this.state.txNumber * this.state.txCost / 800 * parseFloat(this.state.nodeCategory));
   };
 
+
   handleChange(evt) {
     // check it out: we get the evt.target.name (which will be either "email" or "password")
     // and use it to target the key on our `state` object with the same name, using bracket syntax
     this.setState({ [evt.target.name]: evt.target.value });
+    if ( evt.target.name == "useCases" )
+    {
+      let newTxNumber = evt.target.value * 20000;
+      this.setState( { "txNumber" : newTxNumber } );
+    }
+    this.checkDisableGenesisPhase();
+  }
+
+  checkDisableGenesisPhase(){
+    if ( (this.result() * 365) > (this.state.tokenPrice * this.state.stakedTokens * 0.2)) 
+    {
+      this.setState( { "genesisPhaseCheckboxState" : "true" } );
+    }
+    else
+    {
+      this.setState( { "genesisPhaseCheckboxState" : "" } );
+    }
+
   }
 
   handleCheckboxChange(evt) {
@@ -118,14 +139,22 @@ class Login extends Component {
             <label>Lition Token Price(USD)</label>
             <input type="number" name="tokenPrice" value={this.state.tokenPrice} onChange={this.handleChange} />
           </FormGroup>
-
+          <FormGroup>
+            <Label for="useCasesSelect">Use Cases</Label>
+            <Input type="select" name="useCases" id="useCasesSelect" onChange={this.handleChange} >
+              <option value="4">4</option>
+              <option value="8">8</option>
+              <option value="30">30</option>
+              <option value="60">60</option>
+            </Input>
+          </FormGroup>
           <FormGroup>
             <label>Average Number of Transactions</label>
             <input type="number" name="txNumber" value={this.state.txNumber} onChange={this.handleChange} />
           </FormGroup>
 
           <FormGroup>
-            <label>Per Transaction Cost(USD)</label>
+            <label>Cost Per Transaction(USD)</label>
             <input type="number" name="txCost" value={this.state.txCost} onChange={this.handleChange} />
           </FormGroup>
 
@@ -143,7 +172,7 @@ class Login extends Component {
 
           <FormGroup>
             <label>Genesis Phase Activated</label>
-            <input type="checkbox" name="isGenesisPhase" onChange={this.handleCheckboxChange} />
+            <input type="checkbox" name="isGenesisPhase" className="form-check-input" onChange={this.handleCheckboxChange} disabled={this.state.genesisPhaseCheckboxState} />
           </FormGroup>
 
           <FormGroup>
@@ -170,15 +199,22 @@ class Login extends Component {
             <label>Annual Staking Rate =    </label>
             <label>{(this.result() * 365 / this.state.tokenPrice / this.state.stakedTokens * 100).toFixed(2) + "%"}</label>
           </FormGroup>
+          <label>Assumption: Lition Transaction is always 10% of Lition Price</label>
           <FormGroup>
             <label>Contribute 1 lit for this community tool (ETH Wallet) =    </label>
             <label>0x8e4b7c6aE8EC30cbf7Bb6F0a6DD87AB96e3710eb</label>
           </FormGroup>
           <FormGroup>
             <label>GitHub Link for improvements =    </label>
-            <label>https://github.com/fmanea/lition-stake-reactJs.git</label>
+            <a>https://github.com/fmanea/lition-stake-reactJs.git/</a>
           </FormGroup>
+          <FormGroup>
+            <label>Medium article used for calculation =    </label>
+            <a>https://medium.com/lition-blog/lit-staking-update-33d4035082c8</a>
+          </FormGroup>
+
         </form>
+      {/* A JSX comment 
 
         <div className={classes.margin} />
         <Typography id="discrete-slider-small-steps" gutterBottom>
@@ -193,7 +229,7 @@ class Login extends Component {
           marks={marks}
           min={0}
           max={100}
-        />
+        /> */}
        
       </div>
     );
