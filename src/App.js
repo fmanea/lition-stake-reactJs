@@ -130,7 +130,7 @@ class Login extends Component {
       },
     }));
     return (
-      <div className={classes.root}>
+      <div className={classes.root} style={{background: 'linear-gradient(#48D376, #30ACC1)'}} >
         <form>
           <FormGroup>
             <label>Staked Tokens</label>
