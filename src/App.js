@@ -74,7 +74,7 @@ class Login extends Component {
       txCost: 0.01,
       nodeCategory: 1.0,
       isGenesisPhase: false,
-      genesisPhaseCheckboxState: "",
+      genesisPhaseCheckboxState: false,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleCheckboxChange = this.handleCheckboxChange.bind(this);
@@ -102,14 +102,15 @@ class Login extends Component {
   }
 
   checkDisableGenesisPhase(){
-    
+
     if ( (this.result() * 365) > (this.state.tokenPrice * this.state.stakedTokens * 0.2)) 
     {
-      this.setState( { "genesisPhaseCheckboxState" : "true" } );
+      this.setState( { "genesisPhaseCheckboxState" : true } );
+      this.setState ({ "isGenesisPhase" : false});
     }
     else
     {
-      this.setState( { "genesisPhaseCheckboxState" : "" } );
+      this.setState( { "genesisPhaseCheckboxState" : false } );
     }
 
   }
@@ -173,7 +174,7 @@ class Login extends Component {
 
           <FormGroup>
             <label>Genesis Phase Activated</label>
-            <input type="checkbox" name="isGenesisPhase" className="form-check-input" onChange={this.handleCheckboxChange}  disabled={this.state.genesisPhaseCheckboxState} />
+            <input type="checkbox" name="isGenesisPhase" className="form-check-input" onChange={this.handleCheckboxChange} checked={this.state.isGenesisPhase} disabled={this.state.genesisPhaseCheckboxState} />
           </FormGroup>
 
           <FormGroup>
