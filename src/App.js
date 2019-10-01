@@ -92,16 +92,17 @@ class Login extends Component {
   handleChange(evt) {
     // check it out: we get the evt.target.name (which will be either "email" or "password")
     // and use it to target the key on our `state` object with the same name, using bracket syntax
-    this.setState({ [evt.target.name]: evt.target.value });
+    this.setState({ [evt.target.name]: evt.target.value }, () => this.checkDisableGenesisPhase());
     if ( evt.target.name == "useCases" )
     {
       let newTxNumber = evt.target.value * 20000;
-      this.setState( { "txNumber" : newTxNumber } );
+      this.setState( { "txNumber" : newTxNumber }, () => this.checkDisableGenesisPhase());
     }
-    this.checkDisableGenesisPhase();
+    
   }
 
   checkDisableGenesisPhase(){
+    
     if ( (this.result() * 365) > (this.state.tokenPrice * this.state.stakedTokens * 0.2)) 
     {
       this.setState( { "genesisPhaseCheckboxState" : "true" } );
@@ -172,7 +173,7 @@ class Login extends Component {
 
           <FormGroup>
             <label>Genesis Phase Activated</label>
-            <input type="checkbox" name="isGenesisPhase" className="form-check-input" onChange={this.handleCheckboxChange} disabled={this.state.genesisPhaseCheckboxState} />
+            <input type="checkbox" name="isGenesisPhase" className="form-check-input" onChange={this.handleCheckboxChange}  disabled={this.state.genesisPhaseCheckboxState} />
           </FormGroup>
 
           <FormGroup>
