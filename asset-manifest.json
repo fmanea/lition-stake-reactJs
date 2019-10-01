@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/lition-stake-site/static/css/main.73f3a919.chunk.css",
+    "main.js": "/lition-stake-site/static/js/main.c9f3e895.chunk.js",
+    "main.js.map": "/lition-stake-site/static/js/main.c9f3e895.chunk.js.map",
+    "runtime~main.js": "/lition-stake-site/static/js/runtime~main.551bfcc8.js",
+    "runtime~main.js.map": "/lition-stake-site/static/js/runtime~main.551bfcc8.js.map",
+    "static/js/2.7a7d5c6f.chunk.js": "/lition-stake-site/static/js/2.7a7d5c6f.chunk.js",
+    "static/js/2.7a7d5c6f.chunk.js.map": "/lition-stake-site/static/js/2.7a7d5c6f.chunk.js.map",
+    "index.html": "/lition-stake-site/index.html",
+    "precache-manifest.8cb25d587352032bffcc2973511ab33c.js": "/lition-stake-site/precache-manifest.8cb25d587352032bffcc2973511ab33c.js",
+    "service-worker.js": "/lition-stake-site/service-worker.js",
+    "static/css/main.73f3a919.chunk.css.map": "/lition-stake-site/static/css/main.73f3a919.chunk.css.map"
+  }
+}
