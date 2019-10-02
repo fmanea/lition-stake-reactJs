@@ -130,7 +130,9 @@ class Login extends Component {
       },
     }));
     return (
-      <div className={classes.root} style={{background: 'linear-gradient(#48D376, #30ACC1)'}} >
+      <div className='container'>
+        <div className='content'>
+          <div>
         <form>
           <FormGroup>
             <label>Staked Tokens</label>
@@ -216,6 +218,9 @@ class Login extends Component {
           </FormGroup>
 
         </form>
+        </div>
+        </div>
+        
       {/* A JSX comment 
 
         <div className={classes.margin} />
