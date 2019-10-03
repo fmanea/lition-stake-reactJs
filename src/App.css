@@ -10,10 +10,10 @@
 
 .content {
   background: white;
-  width: 70%;
-  height: 70%;
-  min-width: 70%;
-  min-height: 70%;
+  width: 40%;
+  height: 40%;
+  min-width: 230px;
+  max-width: 80%;
   margin: 5% auto;
   
   position:relative;
