@@ -5,6 +5,7 @@ import './App.css';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Slider from '@material-ui/core/Slider';
+import logo from './lition_logo_bw_black.png'
 
 
 
@@ -132,7 +133,15 @@ class Login extends Component {
     return (
       <div className='container'>
         <div className='content'>
-          <div>
+
+          <div className='imageContainer'>
+              <img className='litionLogoImage' src={logo} /> 
+              <span>
+               Staking
+               <br/>
+               Calculator
+              </span>
+          </div>
         <form>
           <FormGroup>
             <label>Staked Tokens</label>
@@ -219,7 +228,7 @@ class Login extends Component {
 
         </form>
         </div>
-        </div>
+        
         
       {/* A JSX comment 
 
