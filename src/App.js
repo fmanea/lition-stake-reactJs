@@ -187,43 +187,39 @@ class Login extends Component {
             <label>Genesis Phase Activated</label>
             <input type="checkbox" name="isGenesisPhase" className="form-check-input" onChange={this.handleCheckboxChange} checked={this.state.isGenesisPhase} disabled={this.state.genesisPhaseCheckboxState} />
           </FormGroup>
+          <div className='resultingIncome'>
+          <label>Resulting Income</label>
 
+          
           <FormGroup>
-            <label>My Current Lition Value(USD) =    </label>
-            <label>{(this.state.tokenPrice * this.state.stakedTokens).toFixed(2) + "$"}</label>
-          </FormGroup>
-
-          <FormGroup>
-            <label>Average Daily Earning(USD) =    </label>
-            <label>{(this.result()).toFixed(2) + "$"}</label>
+            <label>{(this.result()).toFixed(2) + "$"}/day</label>
           </FormGroup>
 
           <FormGroup>
-            <label>Average Monthly Earning(USD) =    </label>
-            <label>{(this.result() * 30).toFixed(2) + "$"}</label>
+            <label>{(this.result() * 30).toFixed(2) + "$"}/month</label>
           </FormGroup>
 
           <FormGroup>
-            <label>Average Yearly Earning(USD) =    </label>
-            <label>{(this.result() * 365).toFixed(2) + "$"}</label>
+            <label>{(this.result() * 365).toFixed(2) + "$"}/year</label>
           </FormGroup>
 
           <FormGroup>
-            <label>Annual Staking Rate =    </label>
-            <label>{(this.result() * 365 / this.state.tokenPrice / this.state.stakedTokens * 100).toFixed(2) + "%"}</label>
+            <label>{(this.result() * 365 / this.state.tokenPrice / this.state.stakedTokens * 100).toFixed(2) + "%"} - annual Staking Rate</label>
           </FormGroup>
-          <label>Assumption: Lition Transaction is always 10% of Lition Price</label>
+          
           <FormGroup>
-            <label>Contribute 1 lit for this community tool (ETH Wallet) =    </label>
-            <label>0x8e4b7c6aE8EC30cbf7Bb6F0a6DD87AB96e3710eb</label>
+            <label>{(this.state.tokenPrice * this.state.stakedTokens).toFixed(2) + "$"} - my LIT value</label>
+          </FormGroup>
+
+          </div>
+          <FormGroup>
+            <a href="https://medium.com/lition-blog/lit-staking-update-33d4035082c8<">Medium Article</a>
           </FormGroup>
           <FormGroup>
-            <label>GitHub Link for improvements =    </label>
-            <a>https://github.com/fmanea/lition-stake-reactJs.git/</a>
+            <a href="https://github.com/fmanea/lition-stake-reactJs.git/">GitHub Link</a>
           </FormGroup>
           <FormGroup>
-            <label>Medium article used for calculation =    </label>
-            <a>https://medium.com/lition-blog/lit-staking-update-33d4035082c8</a>
+            <a href="https://etherscan.io/address/0x8e4b7c6aE8EC30cbf7Bb6F0a6DD87AB96e3710eb">Contribute 1 lit</a>
           </FormGroup>
 
         </form>
