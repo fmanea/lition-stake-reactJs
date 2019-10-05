@@ -5,7 +5,8 @@ import './App.css';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Slider from '@material-ui/core/Slider';
-import logo from './lition_logo_bw_black.png'
+import logo from './lition_logo_bw_black.png';
+import Switch from "react-switch";
 
 
 
@@ -114,7 +115,7 @@ class Login extends Component {
   }
 
   handleCheckboxChange(evt) {
-    this.setState({ [evt.target.name]: evt.target.checked });
+    this.setState({ "isGenesisPhase": evt });
   }
 
 
@@ -182,24 +183,40 @@ class Login extends Component {
 
             <div className='textFormPairContainer'>
               <p>Genesis Phase Activated</p>
-              <Input type="checkbox" name="isGenesisPhase" className="form-check-input" onChange={this.handleCheckboxChange} checked={this.state.isGenesisPhase} disabled={this.state.genesisPhaseCheckboxState} />
+              <Switch
+                name="isGenesisPhase"
+                checked={this.state.isGenesisPhase}
+                onChange={this.handleCheckboxChange}
+                disabled={this.state.genesisPhaseCheckboxState}
+                onColor="#86d3ff"
+                onHandleColor="#2693e6"
+                handleDiameter={30}
+                uncheckedIcon={false}
+                checkedIcon={false}
+                boxShadow="0px 1px 5px rgba(0, 0, 0, 0.6)"
+                activeBoxShadow="0px 0px 1px 10px rgba(0, 0, 0, 0.2)"
+                height={20}
+                width={48}
+                className="react-switch"
+                id="material-switch"
+              />
             </div>
-            </div>
-            <div className='resultingIncomeContainer'>
-              <p>Resulting Income</p>
-              <p>{(this.result()).toFixed(2) + "$"}/day</p>
-              <p>{(this.result() * 30).toFixed(2) + "$"}/month</p>
-              <p>{(this.result() * 365).toFixed(2) + "$"}/year</p>
-              <p>{(this.result() * 365 / this.state.tokenPrice / this.state.stakedTokens * 100).toFixed(2) + "%"} - annual Staking Rate</p>
-              <p>{(this.state.tokenPrice * this.state.stakedTokens).toFixed(2) + "$"} - my LIT value</p>
-            </div>
-            <div className='optionalInformationContainer'>
-              <a href="https://medium.com/lition-blog/lit-staking-update-33d4035082c8<">Medium Article</a>
-              <a href="https://github.com/fmanea/lition-stake-reactJs.git/">GitHub Link</a>
-              <a href="https://etherscan.io/address/0x8e4b7c6aE8EC30cbf7Bb6F0a6DD87AB96e3710eb">Donate 1 lit</a>
-            </div>
+          </div>
+          <div className='resultingIncomeContainer'>
+            <p>Resulting Income</p>
+            <p>{(this.result()).toFixed(2) + "$"}/day</p>
+            <p>{(this.result() * 30).toFixed(2) + "$"}/month</p>
+            <p>{(this.result() * 365).toFixed(2) + "$"}/year</p>
+            <p>{(this.result() * 365 / this.state.tokenPrice / this.state.stakedTokens * 100).toFixed(2) + "%"} - annual Staking Rate</p>
+            <p>{(this.state.tokenPrice * this.state.stakedTokens).toFixed(2) + "$"} - my LIT value</p>
+          </div>
+          <div className='optionalInformationContainer'>
+            <a href="https://medium.com/lition-blog/lit-staking-update-33d4035082c8<">Medium Article</a>
+            <a href="https://github.com/fmanea/lition-stake-reactJs.git/">GitHub Link</a>
+            <a href="https://etherscan.io/address/0x8e4b7c6aE8EC30cbf7Bb6F0a6DD87AB96e3710eb">Donate 1 lit</a>
+          </div>
 
-          
+
         </div>
 
 

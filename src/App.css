@@ -36,7 +36,8 @@
   padding-bottom: 5px ;
 }
 .userInputContainer p{
-  color:#051A2D
+  color:#051A2D;
+  font-size: 19px;
 }
 
 .imageContainer span {
