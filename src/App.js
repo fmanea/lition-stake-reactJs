@@ -1,6 +1,6 @@
 import React from 'react';
 import { Component } from 'react';
-import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Button, Form, textFormPairContainer, Label, Input, FormText } from 'reactstrap';
 import './App.css';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
@@ -140,36 +140,36 @@ class Login extends Component {
               </span>
           </div>
           <div className="userInputContainer">
-            <FormGroup className='formGroup'>
+            <div className='textFormPairContainer'>
               <p>Staked Tokens</p>
-              <input type="number" name="stakedTokens" value={this.state.stakedTokens} onChange={this.handleChange} />
-            </FormGroup>
+              <Input type="number" name="stakedTokens" value={this.state.stakedTokens} onChange={this.handleChange} />
+            </div>
 
-            <FormGroup className='formGroup'>
+            <div className='textFormPairContainer'>
               <p>Lition Token Price(USD)</p>
-              <input type="number" name="tokenPrice" value={this.state.tokenPrice} onChange={this.handleChange} />
-            </FormGroup>
-            <FormGroup className='formGroup'>
-              <Label for="useCasesSelect">Use Cases</Label>
+              <Input type="number" name="tokenPrice" value={this.state.tokenPrice} onChange={this.handleChange} />
+            </div>
+            <div className='textFormPairContainer'>
+              <p >Use Cases</p>
               <Input type="select" name="useCases" id="useCasesSelect" onChange={this.handleChange} >
                 <option value="4">4</option>
                 <option value="8">8</option>
                 <option value="30">30</option>
                 <option value="60">60</option>
               </Input>
-            </FormGroup>
-            <FormGroup className='formGroup'>
-              <label>Average Number of Transactions</label>
-              <input type="number" name="txNumber" value={this.state.txNumber} onChange={this.handleChange} />
-            </FormGroup>
+            </div>
+            <div className='textFormPairContainer'>
+              <p>Average Number of Transactions</p>
+              <Input type="number" name="txNumber" value={this.state.txNumber} onChange={this.handleChange} />
+            </div>
 
-            <FormGroup className='formGroup'>
-              <label>Cost Per Transaction(USD)</label>
-              <input type="number" name="txCost" value={this.state.txCost} onChange={this.handleChange} />
-            </FormGroup>
+            <div className='textFormPairContainer'>
+              <p>Cost Per Transaction(USD)</p>
+              <Input type="number" name="txCost" value={this.state.txCost} onChange={this.handleChange} />
+            </div>
 
-            <FormGroup className='formGroup'>
-              <Label for="nodeCategorySelect">Node Category</Label>
+            <div className='textFormPairContainer'>
+              <p>Node Category</p>
               <Input type="select" name="nodeCategory" id="nodeCategorySelect" onChange={this.handleChange} >
                 <option value="1">Node</option>
                 <option value="2">Trust Node</option>
@@ -178,12 +178,12 @@ class Login extends Component {
                 <option value="1.6">Lition Pool Staking 6 Months</option>
                 <option value="1.8">Lition Pool Staking 12 Months</option>
               </Input>
-            </FormGroup>
+            </div>
 
-            <FormGroup className='formGroup'>
-              <label>Genesis Phase Activated</label>
-              <input type="checkbox" name="isGenesisPhase" className="form-check-input" onChange={this.handleCheckboxChange} checked={this.state.isGenesisPhase} disabled={this.state.genesisPhaseCheckboxState} />
-            </FormGroup>
+            <div className='textFormPairContainer'>
+              <p>Genesis Phase Activated</p>
+              <Input type="checkbox" name="isGenesisPhase" className="form-check-input" onChange={this.handleCheckboxChange} checked={this.state.isGenesisPhase} disabled={this.state.genesisPhaseCheckboxState} />
+            </div>
             </div>
             <div className='resultingIncomeContainer'>
               <p>Resulting Income</p>

@@ -33,7 +33,10 @@
 .userInputContainer{
   /*border: 2px solid blue;*/
   padding: 3rem;
-  padding-bottom: 0rem ;
+  padding-bottom: 5px ;
+}
+.userInputContainer p{
+  color:#051A2D
 }
 
 .imageContainer span {
@@ -47,8 +50,8 @@
   margin-left: 240px;
   margin-top: -45px;
   padding-left: 5px;
-  border-left: 2px solid #000000;
-
+  border-left: 2px solid #051A2D;
+  color:#051A2D
 }
 
 .litionLogoImage {
@@ -63,19 +66,31 @@
   background: rgba(199, 160, 21, 0.589);
   align-items: center;
   text-align: center;
+  padding: 5px;
 }
 
-.formGroup{
- /*border: 2px solid rgb(170, 49, 49);*/
+.resultingIncomeContainer p{
+  margin:3px;
+  color: white;
+  font-size: 19px;
 }
+
+.textFormPairContainer{
+margin-bottom: 10px 
+}
+
+.textFormPairContainer p{
+  margin: 0;
+ }
+
 .optionalInformationContainer{
   align-items: center;
   text-align: center;
-  padding-bottom: 18px ;
+  padding: 10px
   /*border: 2px solid rgb(170, 49, 49);*/
 }
 .optionalInformationContainer a{
-    padding: 10px;
+    margin: 15px
     /*border: 2px solid rgb(170, 49, 49);*/
 
 }
