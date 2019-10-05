@@ -40,6 +40,18 @@
   font-size: 19px;
 }
 
+.userInputContainer label{
+  color:#051A2D;
+  font-size: 19px;
+}
+
+.react-switch {
+  display: block;
+  top: 7px;
+  left: 13px;
+  }
+
+
 .imageContainer span {
   display: block;
   object-fit: contain; 
@@ -54,6 +66,7 @@
   border-left: 2px solid #051A2D;
   color:#051A2D
 }
+
 
 .litionLogoImage {
   display: block;
