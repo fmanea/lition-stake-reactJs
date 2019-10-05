@@ -16,11 +16,9 @@
   min-width: 390px;
   max-width: 80%;
   margin: 70px auto;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
   border-radius: 12px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
 }
 
 .imageContainer {
@@ -30,7 +28,12 @@
   padding:15px; 
   margin-top: 10px;
   margin-left: 10px;
+}
 
+.userInputContainer{
+  /*border: 2px solid blue;*/
+  padding: 3rem;
+  padding-bottom: 0rem ;
 }
 
 .imageContainer span {
@@ -56,9 +59,23 @@
   height: auto; 
   object-fit: fill; 
 }
-.resultingIncome{
+.resultingIncomeContainer{
   background: rgba(199, 160, 21, 0.589);
-  box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  
+  align-items: center;
+  text-align: center;
+}
+
+.formGroup{
+ /*border: 2px solid rgb(170, 49, 49);*/
+}
+.optionalInformationContainer{
+  align-items: center;
+  text-align: center;
+  padding-bottom: 18px ;
+  /*border: 2px solid rgb(170, 49, 49);*/
+}
+.optionalInformationContainer a{
+    padding: 10px;
+    /*border: 2px solid rgb(170, 49, 49);*/
 
 }

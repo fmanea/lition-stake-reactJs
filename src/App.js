@@ -37,7 +37,7 @@ const marks = [
     label: '20k',
   },
   {
-    value: 40 ,
+    value: 40,
     label: '40k',
   },
   {
@@ -94,24 +94,21 @@ class Login extends Component {
     // check it out: we get the evt.target.name (which will be either "email" or "password")
     // and use it to target the key on our `state` object with the same name, using bracket syntax
     this.setState({ [evt.target.name]: evt.target.value }, () => this.checkDisableGenesisPhase());
-    if ( evt.target.name == "useCases" )
-    {
+    if (evt.target.name == "useCases") {
       let newTxNumber = evt.target.value * 20000;
-      this.setState( { "txNumber" : newTxNumber }, () => this.checkDisableGenesisPhase());
+      this.setState({ "txNumber": newTxNumber }, () => this.checkDisableGenesisPhase());
     }
-    
+
   }
 
-  checkDisableGenesisPhase(){
+  checkDisableGenesisPhase() {
 
-    if ( (this.result() * 365) > (this.state.tokenPrice * this.state.stakedTokens * 0.2)) 
-    {
-      this.setState( { "genesisPhaseCheckboxState" : true } );
-      this.setState ({ "isGenesisPhase" : false});
+    if ((this.result() * 365) > (this.state.tokenPrice * this.state.stakedTokens * 0.2)) {
+      this.setState({ "genesisPhaseCheckboxState": true });
+      this.setState({ "isGenesisPhase": false });
     }
-    else
-    {
-      this.setState( { "genesisPhaseCheckboxState" : false } );
+    else {
+      this.setState({ "genesisPhaseCheckboxState": false });
     }
 
   }
@@ -135,98 +132,78 @@ class Login extends Component {
         <div className='content'>
 
           <div className='imageContainer'>
-              <img className='litionLogoImage' src={logo} /> 
-              <span>
-               Staking
-               <br/>
-               Calculator
+            <img className='litionLogoImage' src={logo} />
+            <span>
+              Staking
+               <br />
+              Calculator
               </span>
           </div>
-        <form>
-          <FormGroup>
-            <label>Staked Tokens</label>
-            <input type="number" name="stakedTokens" value={this.state.stakedTokens} onChange={this.handleChange} />
-          </FormGroup>
+          <div className="userInputContainer">
+            <FormGroup className='formGroup'>
+              <p>Staked Tokens</p>
+              <input type="number" name="stakedTokens" value={this.state.stakedTokens} onChange={this.handleChange} />
+            </FormGroup>
 
-          <FormGroup>
-            <label>Lition Token Price(USD)</label>
-            <input type="number" name="tokenPrice" value={this.state.tokenPrice} onChange={this.handleChange} />
-          </FormGroup>
-          <FormGroup>
-            <Label for="useCasesSelect">Use Cases</Label>
-            <Input type="select" name="useCases" id="useCasesSelect" onChange={this.handleChange} >
-              <option value="4">4</option>
-              <option value="8">8</option>
-              <option value="30">30</option>
-              <option value="60">60</option>
-            </Input>
-          </FormGroup>
-          <FormGroup>
-            <label>Average Number of Transactions</label>
-            <input type="number" name="txNumber" value={this.state.txNumber} onChange={this.handleChange} />
-          </FormGroup>
+            <FormGroup className='formGroup'>
+              <p>Lition Token Price(USD)</p>
+              <input type="number" name="tokenPrice" value={this.state.tokenPrice} onChange={this.handleChange} />
+            </FormGroup>
+            <FormGroup className='formGroup'>
+              <Label for="useCasesSelect">Use Cases</Label>
+              <Input type="select" name="useCases" id="useCasesSelect" onChange={this.handleChange} >
+                <option value="4">4</option>
+                <option value="8">8</option>
+                <option value="30">30</option>
+                <option value="60">60</option>
+              </Input>
+            </FormGroup>
+            <FormGroup className='formGroup'>
+              <label>Average Number of Transactions</label>
+              <input type="number" name="txNumber" value={this.state.txNumber} onChange={this.handleChange} />
+            </FormGroup>
 
-          <FormGroup>
-            <label>Cost Per Transaction(USD)</label>
-            <input type="number" name="txCost" value={this.state.txCost} onChange={this.handleChange} />
-          </FormGroup>
+            <FormGroup className='formGroup'>
+              <label>Cost Per Transaction(USD)</label>
+              <input type="number" name="txCost" value={this.state.txCost} onChange={this.handleChange} />
+            </FormGroup>
 
-          <FormGroup>
-            <Label for="nodeCategorySelect">Node Category</Label>
-            <Input type="select" name="nodeCategory" id="nodeCategorySelect" onChange={this.handleChange} >
-              <option value="1">Node</option>
-              <option value="2">Trust Node</option>
-              <option value="1.2">Lition Pool Staking 1 Month</option>
-              <option value="1.4">Lition Pool Staking 3 Months</option>
-              <option value="1.6">Lition Pool Staking 6 Months</option>
-              <option value="1.8">Lition Pool Staking 12 Months</option>
-            </Input>
-          </FormGroup>
+            <FormGroup className='formGroup'>
+              <Label for="nodeCategorySelect">Node Category</Label>
+              <Input type="select" name="nodeCategory" id="nodeCategorySelect" onChange={this.handleChange} >
+                <option value="1">Node</option>
+                <option value="2">Trust Node</option>
+                <option value="1.2">Lition Pool Staking 1 Month</option>
+                <option value="1.4">Lition Pool Staking 3 Months</option>
+                <option value="1.6">Lition Pool Staking 6 Months</option>
+                <option value="1.8">Lition Pool Staking 12 Months</option>
+              </Input>
+            </FormGroup>
 
-          <FormGroup>
-            <label>Genesis Phase Activated</label>
-            <input type="checkbox" name="isGenesisPhase" className="form-check-input" onChange={this.handleCheckboxChange} checked={this.state.isGenesisPhase} disabled={this.state.genesisPhaseCheckboxState} />
-          </FormGroup>
-          <div className='resultingIncome'>
-          <label>Resulting Income</label>
+            <FormGroup className='formGroup'>
+              <label>Genesis Phase Activated</label>
+              <input type="checkbox" name="isGenesisPhase" className="form-check-input" onChange={this.handleCheckboxChange} checked={this.state.isGenesisPhase} disabled={this.state.genesisPhaseCheckboxState} />
+            </FormGroup>
+            </div>
+            <div className='resultingIncomeContainer'>
+              <p>Resulting Income</p>
+              <p>{(this.result()).toFixed(2) + "$"}/day</p>
+              <p>{(this.result() * 30).toFixed(2) + "$"}/month</p>
+              <p>{(this.result() * 365).toFixed(2) + "$"}/year</p>
+              <p>{(this.result() * 365 / this.state.tokenPrice / this.state.stakedTokens * 100).toFixed(2) + "%"} - annual Staking Rate</p>
+              <p>{(this.state.tokenPrice * this.state.stakedTokens).toFixed(2) + "$"} - my LIT value</p>
+            </div>
+            <div className='optionalInformationContainer'>
+              <a href="https://medium.com/lition-blog/lit-staking-update-33d4035082c8<">Medium Article</a>
+              <a href="https://github.com/fmanea/lition-stake-reactJs.git/">GitHub Link</a>
+              <a href="https://etherscan.io/address/0x8e4b7c6aE8EC30cbf7Bb6F0a6DD87AB96e3710eb">Donate 1 lit</a>
+            </div>
 
           
-          <FormGroup>
-            <label>{(this.result()).toFixed(2) + "$"}/day</label>
-          </FormGroup>
-
-          <FormGroup>
-            <label>{(this.result() * 30).toFixed(2) + "$"}/month</label>
-          </FormGroup>
-
-          <FormGroup>
-            <label>{(this.result() * 365).toFixed(2) + "$"}/year</label>
-          </FormGroup>
-
-          <FormGroup>
-            <label>{(this.result() * 365 / this.state.tokenPrice / this.state.stakedTokens * 100).toFixed(2) + "%"} - annual Staking Rate</label>
-          </FormGroup>
-          
-          <FormGroup>
-            <label>{(this.state.tokenPrice * this.state.stakedTokens).toFixed(2) + "$"} - my LIT value</label>
-          </FormGroup>
-
-          </div>
-          <FormGroup>
-            <a href="https://medium.com/lition-blog/lit-staking-update-33d4035082c8<">Medium Article</a>
-          </FormGroup>
-          <FormGroup>
-            <a href="https://github.com/fmanea/lition-stake-reactJs.git/">GitHub Link</a>
-          </FormGroup>
-          <FormGroup>
-            <a href="https://etherscan.io/address/0x8e4b7c6aE8EC30cbf7Bb6F0a6DD87AB96e3710eb">Contribute 1 lit</a>
-          </FormGroup>
-
-        </form>
         </div>
-        
-        
-      {/* A JSX comment 
+
+
+        {/* A JSX comment 
 
         <div className={classes.margin} />
         <Typography id="discrete-slider-small-steps" gutterBottom>
@@ -242,7 +219,7 @@ class Login extends Component {
           min={0}
           max={100}
         /> */}
-       
+
       </div>
     );
   }
