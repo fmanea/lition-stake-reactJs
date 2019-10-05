@@ -2,7 +2,7 @@ import React from 'react';
 import { Component } from 'react';
 import { Button, Form, textFormPairContainer, Label, Input, FormText } from 'reactstrap';
 import './App.css';
-import { makeStyles } from '@material-ui/core/styles';
+import { withStyles, makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Slider from '@material-ui/core/Slider';
 import logo from './lition_logo_bw_black.png';
@@ -55,6 +55,51 @@ const marks = [
   },
 ];
 
+const iOSBoxShadow = '0 3px 1px rgba(0,0,0,0.1),0 4px 8px rgba(0,0,0,0.13),0 0 0 1px rgba(0,0,0,0.02)';
+
+const StakedTokensSlider = withStyles({
+  root: {
+    color: '#30acc1',
+    height: 2,
+    padding: '15px 0',
+  },
+  thumb: {
+    height: 30,
+    width: 30,
+    backgroundColor: '#fff',
+    border: '5px solid #30acc1',
+    marginTop: -12,
+    marginLeft: -14,
+    '&:focus,&:hover,&$active': {
+      boxShadow: 'inherit',
+    },
+  },
+  active: {},
+  track: {
+    height: 6,
+    backgroundColor: '#30acc1',
+  },
+  rail: {
+    height: 6,
+    opacity: 0.3,
+    backgroundColor: '#30acc1',
+  },
+  mark: {
+    backgroundColor: '#30acc1',
+    height: 8,
+    width: 1,
+    marginTop: 5,
+
+  },
+  markActive: {
+    opacity: 1,
+    backgroundColor: '#30acc1',
+  },
+  markLabel: {
+    marginTop: 10
+  }
+})(Slider);
+
 function valuetext(value) {
   return `${value}k`;
 }
@@ -80,6 +125,7 @@ class Login extends Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleCheckboxChange = this.handleCheckboxChange.bind(this);
+    this.handleStakedTokensSlider = this.handleStakedTokensSlider.bind(this);
 
   }
 
@@ -118,6 +164,10 @@ class Login extends Component {
     this.setState({ "isGenesisPhase": evt });
   }
 
+  handleStakedTokensSlider(evt, value) {
+    this.setState({ "stakedTokens": value * 1000 });
+  }
+
 
   render() {
     const classes = makeStyles(theme => ({
@@ -143,7 +193,18 @@ class Login extends Component {
           <div className="userInputContainer">
             <div className='textFormPairContainer'>
               <p>Staked Tokens</p>
-              <Input type="number" name="stakedTokens" value={this.state.stakedTokens} onChange={this.handleChange} />
+              <p>{this.state.stakedTokens + " LIT"}</p>
+              <StakedTokensSlider
+                name="stakedTokens"
+                aria-label="discrete-slider-small-steps"
+                defaultValue={1}
+                marks={marks}
+                valueLabelDisplay="off"
+                min={0}
+                max={100}
+                step={1}
+                onChange={this.handleStakedTokensSlider}
+              />
             </div>
 
             <div className='textFormPairContainer'>
@@ -201,6 +262,7 @@ class Login extends Component {
                 id="material-switch"
               />
             </div>
+
           </div>
           <div className='resultingIncomeContainer'>
             <p>Resulting Income</p>
@@ -215,28 +277,7 @@ class Login extends Component {
             <a href="https://github.com/fmanea/lition-stake-reactJs.git/">GitHub Link</a>
             <a href="https://etherscan.io/address/0x8e4b7c6aE8EC30cbf7Bb6F0a6DD87AB96e3710eb">Donate 1 lit</a>
           </div>
-
-
         </div>
-
-
-        {/* A JSX comment 
-
-        <div className={classes.margin} />
-        <Typography id="discrete-slider-small-steps" gutterBottom>
-          Custom marks
-      </Typography>
-        <Slider
-          defaultValue={0}
-          getAriaValueText={valuetext}
-          aria-labelledby="discrete-slider-small-steps"
-          step={1}
-          valueLabelDisplay="auto"
-          marks={marks}
-          min={0}
-          max={100}
-        /> */}
-
       </div>
     );
   }
@@ -245,24 +286,6 @@ class Login extends Component {
 
 function App() {
   return (new Login()
-    /*
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-    */
   );
 }
 
