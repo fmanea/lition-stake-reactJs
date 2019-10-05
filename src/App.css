@@ -54,15 +54,16 @@
 
 .imageContainer span {
   display: block;
-  object-fit: contain; 
+  object-fit: contain;
+  text-align:left;  
   max-width:120px;
   max-height:50px;
   line-height: 22px;
   font-weight: 400;
   font-size: 20px;
-  margin-left: 240px;
+  margin-left: 245px;
   margin-top: -45px;
-  padding-left: 5px;
+  padding-left: 15px;
   border-left: 2px solid #051A2D;
   color:#051A2D
 }
