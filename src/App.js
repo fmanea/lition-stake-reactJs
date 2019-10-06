@@ -249,7 +249,7 @@ class Login extends Component {
                 checked={this.state.isGenesisPhase}
                 onChange={this.handleCheckboxChange}
                 disabled={this.state.genesisPhaseCheckboxState}
-                onColor="#86d3ff"
+                onColor="#30acc1"
                 onHandleColor="#30acc1"
                 handleDiameter={28}
                 uncheckedIcon={false}
