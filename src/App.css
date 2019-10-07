@@ -1,11 +1,14 @@
 .container {
-  width: 100%;
+  width: auto;
   height: 100%;
-  min-width: 100%;
+  min-width: 30rem;
   min-height: 100%;
   display: flex;
-  background: linear-gradient(#48D376, #30ACC1);
+  background: linear-gradient(#48D376, #30ACC1) top right  ;
   background-attachment: fixed;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
 }
 
 .content {
