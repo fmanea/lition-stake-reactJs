@@ -192,9 +192,9 @@ class Login extends Component {
           </div>
           <div className="userInputContainer">
             <div className='textFormPairContainer'>
-              <p>Staked Tokens</p>
-              <p>{this.state.stakedTokens + " LIT"}</p>
-              <StakedTokensSlider
+              <p >Staked Tokens</p>
+              <p className="litAmmount">{this.state.stakedTokens + " LIT"}</p>
+              <StakedTokensSlider className="stakedTokensSlider"
                 name="stakedTokens"
                 aria-label="discrete-slider-small-steps"
                 defaultValue={1}
