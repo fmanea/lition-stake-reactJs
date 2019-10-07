@@ -49,6 +49,11 @@
   color:#051A2D;
   font-size: 19px;
 }
+.userInputContainer .inputContainer{
+  color: #051A2D;
+  font-size: 17px;
+  font-weight: 400;
+}
 
 .react-switch {
   display: block;

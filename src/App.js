@@ -351,7 +351,7 @@ class Login extends Component {
             </div>
             <div className='textFormPairContainer'>
               <p>Node Type</p>
-              <Input type="select" name="nodeCategory" id="nodeCategorySelect" onChange={this.handleChange} >
+              <Input type="select" name="nodeCategory" id="nodeCategorySelect" className='inputContainer' onChange={this.handleChange} >
                 <option value="1">Node</option>
                 <option value="2">Trust Node</option>
                 <option value="1.2">Lition Pool Staking 1 Month</option>
@@ -363,17 +363,17 @@ class Login extends Component {
 
             <div className='textFormPairContainer'>
               <p>Average Number of Transactions</p>
-              <Input type="number" name="txNumber" step="1000" value={this.state.txNumber} onChange={this.handleChange} />
+              <Input type="number" name="txNumber" step="1000" className='inputContainer' value={this.state.txNumber} onChange={this.handleChange} />
             </div>
 
             <div className='textFormPairContainer'>
               <p>Cost Per Transaction(USD)</p>
-              <Input type="number" name="txCost" step="0.01" value={this.state.txCost} onChange={this.handleChange} />
+              <Input type="number" name="txCost" step="0.01" className='inputContainer' value={this.state.txCost} onChange={this.handleChange} />
             </div>
 
             <div className='textFormPairContainer'>
               <p>Lition Token Price(USD)</p>
-              <Input type="number" name="tokenPrice"  step="0.1" value={this.state.tokenPrice} onChange={this.handleChange} />
+              <Input type="number" name="tokenPrice"  step="0.1" className='inputContainer' value={this.state.tokenPrice} onChange={this.handleChange} />
             </div>
 
             <div className='textFormPairContainer'>
