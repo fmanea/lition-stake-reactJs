@@ -249,11 +249,14 @@ class Login extends Component {
 
   result = () => {
     if (this.state.isGenesisPhase == true) {
-      return (this.state.stakedTokens * 0.00001 * this.state.txNumber * this.state.txCost / 800 * parseFloat(this.state.nodeCategory) * 2.74);
+      return (this.state.stakedTokens * this.state.tokenPrice * 0.2 / 365);
     }
     return (this.state.stakedTokens * 0.00001 * this.state.txNumber * this.state.txCost / 800 * parseFloat(this.state.nodeCategory));
   };
 
+  normalResult = () => {
+    return (this.state.stakedTokens * 0.00001 * this.state.txNumber * this.state.txCost / 800 * parseFloat(this.state.nodeCategory));
+  };
 
   handleChange(evt) {
     // check it out: we get the evt.target.name (which will be either "email" or "password")
@@ -272,7 +275,7 @@ class Login extends Component {
 
   checkDisableGenesisPhase() {
 
-    if ((this.result() * 365) > (this.state.tokenPrice * this.state.stakedTokens * 0.2)) {
+    if ((this.normalResult() * 365) > (this.state.tokenPrice * this.state.stakedTokens * 0.2)) {
       this.setState({ "genesisPhaseCheckboxState": true });
       this.setState({ "isGenesisPhase": false });
     }
