@@ -38,6 +38,7 @@
   /*border: 2px solid blue;*/
   padding: 3rem;
   padding-bottom: 5px ;
+  padding-top: 10px;
 }
 .userInputContainer p{
   color:#051A2D;
@@ -92,6 +93,7 @@
   margin:3px;
   color: white;
   font-size: 19px;
+  font-weight: 400;
 }
 
 .textFormPairContainer{

@@ -92,6 +92,86 @@ const marks = [
   },
 ];
 
+const marksUseCases = [
+  {
+    value: 4,
+    label: '4',
+  },
+  {
+    value: 8
+  },
+  {
+    value: 12
+  },
+  {
+    value: 16
+  },
+  {
+    value: 20
+  },
+  {
+    value: 24
+  },
+  {
+    value: 28
+  },
+  {
+    value: 32
+  },
+  {
+    value: 36,
+  },
+  {
+    value: 40
+  },
+  {
+    value: 44
+  },
+  {
+    value: 48
+  },
+  {
+    value: 52
+  },
+  {
+    value: 56
+  },
+  {
+    value: 60
+  },
+  {
+    value: 64
+  },
+  {
+    value: 68
+  },
+  {
+    value: 72
+  },
+  {
+    value: 76
+  },
+  {
+    value: 80
+  },
+  {
+    value: 84
+  },
+  {
+    value: 88
+  },
+  {
+    value: 92
+  },
+  {
+    value: 96
+  },
+  {
+    value: 100,
+    label: '100',
+  },
+];
+
 const iOSBoxShadow = '0 3px 1px rgba(0,0,0,0.1),0 4px 8px rgba(0,0,0,0.13),0 0 0 1px rgba(0,0,0,0.02)';
 
 const StakedTokensSlider = withStyles({
@@ -163,6 +243,7 @@ class Login extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleCheckboxChange = this.handleCheckboxChange.bind(this);
     this.handleStakedTokensSlider = this.handleStakedTokensSlider.bind(this);
+    this.handleUseCasesSlider = this.handleUseCasesSlider.bind(this);
 
   }
 
@@ -181,6 +262,10 @@ class Login extends Component {
     if (evt.target.name == "useCases") {
       let newTxNumber = evt.target.value * 20000;
       this.setState({ "txNumber": newTxNumber }, () => this.checkDisableGenesisPhase());
+    }
+    if (evt.target.name == "tokenPrice") {
+      let newTxCost = (evt.target.value * 0.1).toFixed(2);
+      this.setState({ "txCost": newTxCost }, () => this.checkDisableGenesisPhase());
     }
 
   }
@@ -203,6 +288,12 @@ class Login extends Component {
 
   handleStakedTokensSlider(evt, value) {
     this.setState({ "stakedTokens": value * 1000 });
+  }
+
+  handleUseCasesSlider(evt, value) {
+    let newTxNumber = value * 20000;
+    this.setState({ "useCases": value });
+    this.setState({ "txNumber": newTxNumber }, () => this.checkDisableGenesisPhase());
   }
 
 
@@ -243,32 +334,23 @@ class Login extends Component {
                 onChange={this.handleStakedTokensSlider}
               />
             </div>
-
-            <div className='textFormPairContainer'>
-              <p>Lition Token Price(USD)</p>
-              <Input type="number" name="tokenPrice" value={this.state.tokenPrice} onChange={this.handleChange} />
-            </div>
             <div className='textFormPairContainer'>
               <p >Use Cases</p>
-              <Input type="select" name="useCases" id="useCasesSelect" onChange={this.handleChange} >
-                <option value="4">4</option>
-                <option value="8">8</option>
-                <option value="30">30</option>
-                <option value="60">60</option>
-              </Input>
+              <p className="litAmmount">{this.state.useCases}</p>
+              <StakedTokensSlider 
+                name="useCases"
+                aria-label="discrete-slider-small-steps"
+                defaultValue={1}
+                marks={marksUseCases}
+                valueLabelDisplay="off"
+                min={4}
+                max={100}
+                step={1}
+                onChange={this.handleUseCasesSlider}
+              />
             </div>
             <div className='textFormPairContainer'>
-              <p>Average Number of Transactions</p>
-              <Input type="number" name="txNumber" value={this.state.txNumber} onChange={this.handleChange} />
-            </div>
-
-            <div className='textFormPairContainer'>
-              <p>Cost Per Transaction(USD)</p>
-              <Input type="number" name="txCost" value={this.state.txCost} onChange={this.handleChange} />
-            </div>
-
-            <div className='textFormPairContainer'>
-              <p>Node Category</p>
+              <p>Node Type</p>
               <Input type="select" name="nodeCategory" id="nodeCategorySelect" onChange={this.handleChange} >
                 <option value="1">Node</option>
                 <option value="2">Trust Node</option>
@@ -277,6 +359,21 @@ class Login extends Component {
                 <option value="1.6">Lition Pool Staking 6 Months</option>
                 <option value="1.8">Lition Pool Staking 12 Months</option>
               </Input>
+            </div>
+
+            <div className='textFormPairContainer'>
+              <p>Average Number of Transactions</p>
+              <Input type="number" name="txNumber" step="1000" value={this.state.txNumber} onChange={this.handleChange} />
+            </div>
+
+            <div className='textFormPairContainer'>
+              <p>Cost Per Transaction(USD)</p>
+              <Input type="number" name="txCost" step="0.01" value={this.state.txCost} onChange={this.handleChange} />
+            </div>
+
+            <div className='textFormPairContainer'>
+              <p>Lition Token Price(USD)</p>
+              <Input type="number" name="tokenPrice"  step="0.1" value={this.state.tokenPrice} onChange={this.handleChange} />
             </div>
 
             <div className='textFormPairContainer'>
