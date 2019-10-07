@@ -38,16 +38,53 @@ const marks = [
     label: '20k',
   },
   {
+    value: 25
+  },
+  {
+    value: 30
+  },
+  {
+    value: 35
+  },
+
+  {
     value: 40,
     label: '40k',
+  },
+  {
+    value: 45
+  },
+  {
+    value: 50
+  },
+  {
+    value: 55
   },
   {
     value: 60,
     label: '60k',
   },
   {
+    value: 65
+  },
+  {
+    value: 70
+  },
+  {
+    value: 75
+  },
+  {
     value: 80,
     label: '80k',
+  },
+  {
+    value: 85
+  },
+  {
+    value: 90
+  },
+  {
+    value: 95
   },
   {
     value: 100,
@@ -86,9 +123,9 @@ const StakedTokensSlider = withStyles({
   },
   mark: {
     backgroundColor: '#30acc1',
-    height: 8,
+    height: 6,
     width: 1,
-    marginTop: 5,
+    marginTop: 6,
 
   },
   markActive: {
