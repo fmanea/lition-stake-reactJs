@@ -25,70 +25,70 @@ const marks = [
     label: '0',
   },
   {
-    value: 5
-  },
-  {
     value: 10
   },
   {
-    value: 15
-  },
-  {
-    value: 20,
-    label: '20k',
-  },
-  {
-    value: 25
+    value: 20
   },
   {
     value: 30
   },
   {
-    value: 35
-  },
-
-  {
     value: 40,
-    label: '40k',
-  },
-  {
-    value: 45
+    label: '100k',
   },
   {
     value: 50
   },
   {
-    value: 55
-  },
-  {
-    value: 60,
-    label: '60k',
-  },
-  {
-    value: 65
+    value: 60
   },
   {
     value: 70
   },
-  {
-    value: 75
-  },
+
   {
     value: 80,
-    label: '80k',
-  },
-  {
-    value: 85
+    label: '200k',
   },
   {
     value: 90
   },
   {
-    value: 95
+    value: 100
   },
   {
-    value: 100,
-    label: '100k',
+    value: 110
+  },
+  {
+    value: 120,
+    label: '300k',
+  },
+  {
+    value: 130
+  },
+  {
+    value: 140
+  },
+  {
+    value: 150
+  },
+  {
+    value: 160,
+    label: '400k',
+  },
+  {
+    value: 170
+  },
+  {
+    value: 180
+  },
+  {
+    value: 190
+  },
+  {
+    value: 200,
+    label: '500k',
   },
 ];
 
@@ -290,7 +290,7 @@ class Login extends Component {
   }
 
   handleStakedTokensSlider(evt, value) {
-    this.setState({ "stakedTokens": value * 1000 });
+    this.setState({ "stakedTokens": value * 2500 });
   }
 
   handleUseCasesSlider(evt, value) {
@@ -332,7 +332,7 @@ class Login extends Component {
                 marks={marks}
                 valueLabelDisplay="off"
                 min={0}
-                max={100}
+                max={200}
                 step={1}
                 onChange={this.handleStakedTokensSlider}
               />
