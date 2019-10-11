@@ -239,14 +239,111 @@ class Login extends Component {
       nodeCategory: 1.0,
       isGenesisPhase: false,
       genesisPhaseCheckboxState: false,
+      circulatingSuply: 0,
+      percentageCirculatingSuply: 50,
+      percentageMark: [],
+      apiData:[]
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleCheckboxChange = this.handleCheckboxChange.bind(this);
     this.handleStakedTokensSlider = this.handleStakedTokensSlider.bind(this);
     this.handleUseCasesSlider = this.handleUseCasesSlider.bind(this);
+    this.handlePercentageCirculatingSuplySlider = this.handlePercentageCirculatingSuplySlider.bind(this)
+
+  }
+  componentDidMount() {
+    fetch('https://api.coingecko.com/api/v3/coins/lition?localization=false&community_data=false&developer_data=false&sparkline=false')
+    .then(res => res.json())
+    .then((data) => {
+      this.setState({ apiData: data }, () => this.processDataFromApi() )
+    })
+    .catch(console.log)
+  }
+
+  processDataFromApi(){
+
+    this.setState({ tokenPrice: (this.state.apiData.market_data.current_price.usd).toFixed(3) })
+    this.setState({ txCost: (this.state.apiData.market_data.current_price.usd/10).toFixed(4) })
+    this.setState({ circulatingSuply: (this.state.apiData.market_data.circulating_supply).toFixed(0) }, () => this.setPercentageMark() )
 
   }
 
+  setPercentageMark(){
+
+    this.setState({
+
+      percentageMark: [
+        {
+          value: 4,
+          label: (this.state.circulatingSuply *0.02 / 1000).toFixed(0)+"K Lit",
+        },
+        {
+          value: 10
+        },
+        {
+          value: 20
+        },
+        {
+          value: 30
+        },
+        {
+          value: 40,
+        },
+        {
+          value: 50
+        },
+        {
+          value: 60
+        },
+        {
+          value: 70
+        },
+      
+        {
+          value: 80,
+        },
+        {
+          value: 90
+        },
+        {
+          value: 100
+        },
+        {
+          value: 110
+        },
+        {
+          value: 120,
+        },
+        {
+          value: 130
+        },
+        {
+          value: 140
+        },
+        {
+          value: 150
+        },
+        {
+          value: 160,
+        },
+        {
+          value: 170
+        },
+        {
+          value: 180
+        },
+        {
+          value: 190
+        },
+        {
+          value: 200,
+          label: (this.state.circulatingSuply / 1000000).toFixed(2)+"M Lit",
+        },
+      ]
+    })
+
+
+  }
   result = () => {
     if (this.state.isGenesisPhase == true) {
       return (this.state.stakedTokens * this.state.tokenPrice * 0.1 * this.state.nodeCategory / 365);
@@ -293,6 +390,10 @@ class Login extends Component {
     this.setState({ "stakedTokens": value * 2500 });
   }
 
+  handlePercentageCirculatingSuplySlider(evt, value) {
+    this.setState({ "percentageCirculatingSuply": (value * 0.5).toFixed(1) });
+  }
+
   handleUseCasesSlider(evt, value) {
     let newTxNumber = value * 20000;
     this.setState({ "useCases": value });
@@ -323,7 +424,7 @@ class Login extends Component {
           </div>
           <div className="userInputContainer">
             <div className='textFormPairContainer'>
-              <p >Staked Tokens</p>
+              <p >My Staked Tokens</p>
               <p className="litAmmount">{this.state.stakedTokens + " LIT"}</p>
               <StakedTokensSlider className="stakedTokensSlider"
                 name="stakedTokens"
@@ -350,6 +451,21 @@ class Login extends Component {
                 max={100}
                 step={1}
                 onChange={this.handleUseCasesSlider}
+              />
+            </div>
+            <div className='textFormPairContainer'>
+              <p >Total Staked Tokens / Circulating Supply</p>
+              <p className="litAmmount">{this.state.percentageCirculatingSuply + "%"}</p>
+              <StakedTokensSlider className="stakedTokensSlider"
+                name="stakedTokens"
+                aria-label="discrete-slider-small-steps"
+                defaultValue={100}
+                marks={this.state.percentageMark}
+                valueLabelDisplay="off"
+                min={4}
+                max={200}
+                step={1}
+                onChange={this.handlePercentageCirculatingSuplySlider}
               />
             </div>
             <div className='textFormPairContainer'>
