@@ -526,7 +526,7 @@ class Login extends Component {
             <p>{(this.state.tokenPrice * this.state.stakedTokens).toFixed(2) + "$"} - my LIT value</p>
           </div>
           <div className='optionalInformationContainer'>
-            <a href="https://medium.com/lition-blog/lit-staking-update-33d4035082c8<">Medium Article</a>
+            <a href="https://medium.com/lition-blog/lit-staking-update-33d4035082c8">Medium Article</a>
             <a href="https://github.com/fmanea/lition-stake-reactJs.git/">GitHub Link</a>
             <a href="https://etherscan.io/address/0x8e4b7c6aE8EC30cbf7Bb6F0a6DD87AB96e3710eb">Donate 1 lit</a>
           </div>
