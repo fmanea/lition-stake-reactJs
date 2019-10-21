@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "lition-staking-testing2",
     "public": "build/",
     "ignore": [
       "firebase.json",
