@@ -238,7 +238,7 @@ class Login extends Component {
       txCost: 0.01,
       nodeCategory: 1.0,
       isGenesisPhase: false,
-      genesisPhaseCheckboxState: false,
+      genesisPhaseCheckboxState: true,
       circulatingSuply: 0,
       percentageCirculatingSuply: 50,
       percentageMark: [],
@@ -348,11 +348,11 @@ class Login extends Component {
     if (this.state.isGenesisPhase == true) {
       return (this.state.stakedTokens * this.state.tokenPrice * 0.1 * this.state.nodeCategory / 365);
     }
-    return (this.state.stakedTokens * 0.00001 * this.state.txNumber * this.state.txCost / 800 * parseFloat(this.state.nodeCategory));
+    return (this.state.txNumber * this.state.txCost / (this.state.circulatingSuply * this.state.percentageCirculatingSuply / 100) * this.state.stakedTokens * 0.6 * parseFloat(this.state.nodeCategory));
   };
 
   normalResult = () => {
-    return (this.state.stakedTokens * 0.00001 * this.state.txNumber * this.state.txCost / 800 * parseFloat(this.state.nodeCategory));
+    return (this.state.txNumber * this.state.txCost / (this.state.circulatingSuply * this.state.percentageCirculatingSuply / 100) * this.state.stakedTokens * 0.6 * parseFloat(this.state.nodeCategory));
   };
 
   handleChange(evt) {
@@ -391,7 +391,7 @@ class Login extends Component {
   }
 
   handlePercentageCirculatingSuplySlider(evt, value) {
-    this.setState({ "percentageCirculatingSuply": (value * 0.5).toFixed(1) });
+    this.setState({ "percentageCirculatingSuply": (value * 0.5).toFixed(1) }, () => this.checkDisableGenesisPhase()) ;
   }
 
   handleUseCasesSlider(evt, value) {
