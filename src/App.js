@@ -237,7 +237,7 @@ class Login extends Component {
       stakedTokens: 1000,
       tokenPrice: 0.1,
       useCases: 2,
-      txNumber: 80000,
+      txNumber: 40000,
       txCost: 0.01,
       nodeCategory: 1.0,
       isGenesisPhase: false,
