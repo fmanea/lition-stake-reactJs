@@ -94,8 +94,11 @@ const marks = [
 
 const marksUseCases = [
   {
-    value: 4,
-    label: '4',
+    value: 2,
+    label: '2',
+  },
+  {
+    value: 5
   },
   {
     value: 8
@@ -233,7 +236,7 @@ class Login extends Component {
     this.state = {
       stakedTokens: 1000,
       tokenPrice: 0.1,
-      useCases: 4,
+      useCases: 2,
       txNumber: 80000,
       txCost: 0.01,
       nodeCategory: 1.0,
@@ -263,7 +266,6 @@ class Login extends Component {
   processDataFromApi(){
 
     this.setState({ tokenPrice: (this.state.apiData.market_data.current_price.usd).toFixed(3) })
-    this.setState({ txCost: (this.state.apiData.market_data.current_price.usd/10).toFixed(4) })
     this.setState({ circulatingSuply: (this.state.apiData.market_data.circulating_supply).toFixed(0) }, () => this.setPercentageMark() )
 
   }
@@ -363,10 +365,6 @@ class Login extends Component {
       let newTxNumber = evt.target.value * 20000;
       this.setState({ "txNumber": newTxNumber }, () => this.checkDisableGenesisPhase());
     }
-    if (evt.target.name == "tokenPrice") {
-      let newTxCost = (evt.target.value * 0.1).toFixed(2);
-      this.setState({ "txCost": newTxCost }, () => this.checkDisableGenesisPhase());
-    }
 
   }
 
@@ -447,7 +445,7 @@ class Login extends Component {
                 defaultValue={1}
                 marks={marksUseCases}
                 valueLabelDisplay="off"
-                min={4}
+                min={2}
                 max={100}
                 step={1}
                 onChange={this.handleUseCasesSlider}
@@ -483,11 +481,6 @@ class Login extends Component {
             <div className='textFormPairContainer'>
               <p>Average Number of Transactions</p>
               <Input type="number" name="txNumber" step="1000" className='inputContainer' value={this.state.txNumber} onChange={this.handleChange} />
-            </div>
-
-            <div className='textFormPairContainer'>
-              <p>Cost Per Transaction(USD)</p>
-              <Input type="number" name="txCost" step="0.01" className='inputContainer' value={this.state.txCost} onChange={this.handleChange} />
             </div>
 
             <div className='textFormPairContainer'>
