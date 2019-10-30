@@ -479,7 +479,7 @@ class Login extends Component {
             </div>
 
             <div className='textFormPairContainer'>
-              <p>Average Number of Transactions</p>
+              <p>Average Number of Transactions / Day</p>
               <Input type="number" name="txNumber" step="1000" className='inputContainer' value={this.state.txNumber} onChange={this.handleChange} />
             </div>
 
