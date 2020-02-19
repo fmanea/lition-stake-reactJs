@@ -1,5 +1,6 @@
 # lition-stake-reactJs
 A simple webpage that calculates staking details on Lition Blockchain
+Check www.litionstaking.com for the result.
 
 
 
